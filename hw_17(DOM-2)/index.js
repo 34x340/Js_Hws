@@ -39,3 +39,25 @@ const images = [
     },
    ];
 
+   const gallery = document.querySelector('#gallery');
+
+   const galleryEls = images.map(image => `
+       <li class="gallery-item">
+           <img src="${image.url}" alt="${image.alt}">
+       </li>
+   `).join('');
+   
+   gallery.insertAdjacentHTML('beforeend', galleryEls);
+   
+// 4 /////
+
+let counterValue = 0;
+const counterEl = document.querySelector('#value');
+const plusBut = document.querySelector('button[data-action="plus"]');
+const minusBut = document.querySelector('button[data-action="minus"]');
+const counterDiv = document.querySelector('#counter');
+const plus = () => counterValue -= 1;
+const minus = () => counterValue += 1;
+plusBut.addEventListener('click', plus);
+minusBut.addEventListener('click', minus);
+counterDiv.addEventListener('click', () => counterEl.innerHTML = counterValue);
